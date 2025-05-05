@@ -6,6 +6,8 @@ const Transaction = require("../models/Transaction");
 router.post("/add", async (req, res) => {
   try {
     const { userId, desc, amount, type } = req.body;
+    console.log("Incoming Transaction:", req.body); 
+
     const newTxn = new Transaction({ userId, desc, amount, type });
     await newTxn.save();
     res.status(201).json(newTxn);
